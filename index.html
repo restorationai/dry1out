@@ -47,7 +47,8 @@
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)",
                         'patriotic-gradient': "linear-gradient(135deg, rgba(2,6,23,1) 0%, rgba(30,64,175,0.2) 50%, rgba(153,27,27,0.2) 100%)",
-                        'blueprint-grid': "linear-gradient(rgba(6,182,212,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.1) 1px, transparent 1px)"
+                        'blueprint-grid': "linear-gradient(rgba(6,182,212,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.1) 1px, transparent 1px)",
+                        'biohazard-gradient': "linear-gradient(to bottom, #020617 0%, #0f2e1d 50%, #020617 100%)" /* Slight green tint for biohazard */
                     }
                 }
             }
@@ -76,6 +77,12 @@
         .text-glow-green { text-shadow: 0 0 15px rgba(74, 222, 128, 0.9); }
         .text-glow-white { text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.5); }
         
+        /* Nav Link Active State */
+        .nav-link.active {
+            color: #ffffff !important;
+            border-bottom-color: #06b6d4 !important; /* brand-blue */
+        }
+
         /* Button Hovers */
         .btn-hover-effect {
             position: relative;
@@ -153,65 +160,115 @@
 
     <!-- === NAVIGATION HUD === -->
     <nav class="fixed top-0 w-full z-50 glass-panel shadow-neon-blue">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- New Logo -->
-            <a href="#" class="flex items-center gap-3 group cursor-pointer">
-                <img src="https://storage.googleapis.com/msgsndr/Tx5eKisj3Xluq1SeZKe3/media/692aac18313bfd5160f250dd.png" alt="Dry1Out Logo" class="h-10 md:h-16 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
-            </a>
+        <div class="container mx-auto px-4 py-3">
+            
+            <!-- DESKTOP NAV LAYOUT -->
+            <div class="hidden lg:flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group cursor-pointer">
+                    <img src="https://storage.googleapis.com/msgsndr/Tx5eKisj3Xluq1SeZKe3/media/692aac18313bfd5160f250dd.png" alt="Dry1Out Logo" class="h-16 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                </a>
 
-            <!-- Links (Desktop) -->
-            <div class="hidden lg:flex gap-8 text-sm font-bold tracking-widest uppercase">
-                <a href="#" class="text-white text-glow-blue transition border-b border-brand-blue">Home</a>
-                <a href="#about" class="text-gray-400 hover:text-white hover:text-glow-blue transition">About</a>
-                <a href="#services" class="text-gray-400 hover:text-white hover:text-glow-blue transition">Services</a>
-                <!-- UPDATED RECONSTRUCTION LINK (NO BLINK, MATCHING STYLE) -->
-                <a href="#reconstruction" class="text-gray-400 hover:text-white hover:text-glow-blue transition">Rebuild</a>
-                <a href="#client-reviews" class="text-gray-400 hover:text-white hover:text-glow-blue transition">Reviews</a>
-                <a href="#gallery" class="text-gray-400 hover:text-white hover:text-glow-blue transition">Gallery</a>
-                <a href="#contact" class="text-gray-400 hover:text-white hover:text-glow-blue transition">Contact</a>
+                <!-- Links (Desktop) with Scroll Spy IDs -->
+                <div class="flex gap-8 text-sm font-bold tracking-widest uppercase">
+                    <a href="#home" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Home</a>
+                    <a href="#about" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">About</a>
+                    <a href="#services" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Services</a>
+                    <!-- Updated Bio/Trauma Link Color to Gray -->
+                    <a href="#biohazard" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Bio/Trauma</a>
+                    <a href="#reconstruction" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Rebuild</a>
+                    <a href="#why-choose-us" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Why Us</a>
+                    <a href="#gallery" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Gallery</a>
+                    <a href="#contact" class="nav-link text-gray-400 hover:text-white transition border-b-2 border-transparent">Contact</a>
+                </div>
+
+                <!-- CTA (Desktop) -->
+                <a href="tel:8883791688" class="flex items-center gap-3 px-6 py-2 border border-brand-red/50 bg-brand-red/10 hover:bg-brand-red hover:text-white transition group btn-hover-effect">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75 group-hover:bg-white"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-red group-hover:bg-white"></span>
+                    </span>
+                    <span class="font-display font-bold tracking-wider text-brand-red text-glow-red group-hover:text-white transition">CALL US NOW</span>
+                </a>
             </div>
 
-            <!-- CTA (Desktop) - UPDATED: Says CALL US NOW with Red Glow -->
-            <a href="tel:8883791688" class="hidden md:flex items-center gap-3 px-6 py-2 border border-brand-red/50 bg-brand-red/10 hover:bg-brand-red hover:text-white transition group btn-hover-effect">
-                <span class="relative flex h-3 w-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75 group-hover:bg-white"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-red group-hover:bg-white"></span>
-                </span>
-                <span class="font-display font-bold tracking-wider text-brand-red text-glow-red group-hover:text-white transition">CALL US NOW</span>
-            </a>
+            <!-- MOBILE NAV LAYOUT -->
+            <div class="lg:hidden flex justify-between items-center w-full relative h-14">
+                
+                <!-- Left: Mobile Call Button (Big Circle) -->
+                <a href="tel:8883791688" class="flex items-center justify-center w-12 h-12 bg-brand-red rounded-full shadow-neon-red animate-pulse z-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                </a>
 
-            <!-- Mobile CTA Button (UPDATED: Bigger Circle, e.g., h-14 w-14) -->
-            <a href="tel:8883791688" class="md:hidden flex items-center justify-center w-14 h-14 bg-brand-red rounded-full shadow-neon-red animate-pulse">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            </a>
+                <!-- Center: Logo (Absolute Positioned) -->
+                <a href="#" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40">
+                    <img src="https://storage.googleapis.com/msgsndr/Tx5eKisj3Xluq1SeZKe3/media/692aac18313bfd5160f250dd.png" alt="Dry1Out Logo" class="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                </a>
+
+                <!-- Right: Hamburger Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-white focus:outline-none z-50 p-2">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
+    <!-- === MOBILE MENU OVERLAY === -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-navy-900/95 backdrop-blur-xl z-40 hidden flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <div class="flex flex-col gap-6 text-center">
+            <a href="#home" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-white tracking-widest hover:text-brand-blue transition">HOME</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">ABOUT</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">SERVICES</a>
+            <a href="#biohazard" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-green transition">BIO/TRAUMA</a>
+            <a href="#reconstruction" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">REBUILD</a>
+            <a href="#why-choose-us" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">WHY US</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">GALLERY</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-gray-400 tracking-widest hover:text-brand-blue transition">CONTACT</a>
+        </div>
+        <!-- Close Button inside overlay -->
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
     <!-- === HERO SECTION === -->
-    <header class="relative min-h-[60vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
+    <!-- Updated min-height to 85vh for mobile and added pt-32/pb-20 for more vertical spacing -->
+    <header id="home" class="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden pt-32 pb-20 md:pt-16 md:pb-0">
         <div class="absolute inset-0 z-0">
             <img src="https://d1hz0qcu1muexe.cloudfront.net/upload/5f88c2e6f8bb90272bdbb9a6/large/c81dffb60c295e0161938d4e9fa23310FireDamageRestorationSanJose.jpg" alt="Hero Background" class="w-full h-full object-cover opacity-60 hero-bg-anim">
             <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/50 to-navy-900/20"></div>
             <div class="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         </div>
 
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <!-- Top Tagline (UPDATED TEXT) -->
-            <div class="inline-block mb-8 -mt-24 md:mt-0 md:mb-6 px-4 py-1 border border-brand-blue/30 bg-navy-900/60 backdrop-blur-md rounded-sm">
-                <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-[8px] md:text-sm">Serving Northern and Southern California</span>
+        <div class="container mx-auto px-4 relative z-10 text-center flex flex-col justify-center h-full">
+            <!-- Top Tagline (UPDATED SPACING & POSITION) -->
+            <div class="mb-12 md:mb-6 -mt-10 md:mt-0">
+                <div class="inline-block px-4 py-1 border border-brand-blue/30 bg-navy-900/60 backdrop-blur-md rounded-sm">
+                    <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-[8px] md:text-sm">Serving Northern and Southern California</span>
+                </div>
             </div>
             
-            <!-- Main Headline -->
-            <h1 class="font-display text-3xl sm:text-5xl md:text-8xl lg:text-9xl font-bold leading-[0.9] mb-6 drop-shadow-2xl whitespace-nowrap tracking-tighter md:tracking-normal">
-                <span class="text-brand-blue text-glow-blue inline">WATER</span> <span class="inline text-white opacity-50 mx-0.5 md:mx-1">•</span> 
-                <span class="text-brand-red text-glow-red inline">FIRE</span> <span class="inline text-white opacity-50 mx-0.5 md:mx-1">•</span> 
+            <!-- Main Headline (UPDATED SPACING) -->
+            <h1 class="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] mb-10 md:mb-6 drop-shadow-2xl whitespace-nowrap tracking-tighter md:tracking-normal">
+                <span class="text-brand-blue text-glow-blue inline animate-pulse">WATER</span> <span class="inline text-white opacity-50 mx-0.5 md:mx-1">•</span> 
+                <span class="text-brand-red text-glow-red inline animate-pulse">FIRE</span> <span class="inline text-white opacity-50 mx-0.5 md:mx-1">•</span> 
                 <!-- GREEN MOLD TEXT -->
-                <span class="text-brand-green text-glow-green inline">MOLD</span>
+                <span class="text-brand-green text-glow-green inline animate-pulse">MOLD</span>
             </h1>
             
-            <!-- Description (UPDATED STYLING AS REQUESTED) -->
-            <p class="text-xs md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto font-light leading-relaxed border-t border-b border-white/20 py-3 md:py-4 bg-navy-900/30 backdrop-blur-sm">
-                <span class="text-white font-bold">Cleanup, Repair, & Reconstruction.</span> <span class="text-white font-bold">Fast Response Times</span> | <span class="text-brand-blue font-bold text-glow-blue">Expert Technicians</span> | <span class="text-brand-red font-bold text-glow-red">24/7</span>
+            <!-- Description (UPDATED STYLING: ALL WHITE TEXT) -->
+            <p class="text-xs md:text-xl text-gray-200 mb-12 md:mb-8 max-w-3xl mx-auto font-light leading-relaxed border-t border-b border-white/20 py-4 md:py-4 bg-navy-900/30 backdrop-blur-sm">
+                <span class="text-white font-bold">Cleanup, Repair, & Reconstruction</span> 
+                <span class="text-white opacity-50 mx-1">|</span> 
+                <span class="text-white font-bold">Fast Response Times</span> 
+                <span class="text-white opacity-50 mx-1">|</span> 
+                <span class="text-white font-bold">Expert Technicians</span> 
+                <span class="text-white opacity-50 mx-1">|</span> 
+                <span class="text-white font-bold">24/7</span>
             </p>
 
             <!-- BUTTONS -->
@@ -327,15 +384,15 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <!-- FIRE / SMOKE CARD -->
                 <div class="group relative">
                     <div class="absolute -inset-0.5 bg-gradient-to-b from-brand-red to-navy-900 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-500"></div>
                     <div class="relative bg-navy-800 border border-white/10 rounded-lg overflow-hidden h-full flex flex-col hover:-translate-y-2 transition duration-300 shadow-2xl">
                         <div class="h-64 relative overflow-hidden clip-screen bg-black">
-                            <img src="https://callservicefirst.com/wp-content/uploads/2021/11/Burnt-apartment-house-interior-1440x960.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-700" alt="Fire Damage">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
-                            <div class="absolute top-4 right-4 bg-brand-red/90 text-white font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-red-400">Fire Hazard</div>
+                            <!-- UPDATED: Removed opacity-80 to make it bright, removed gradient overlay -->
+                            <img src="https://callservicefirst.com/wp-content/uploads/2021/11/Burnt-apartment-house-interior-1440x960.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Fire Damage">
+                            <!-- Removed overlay div here -->
+                            <div class="absolute top-4 right-4 bg-brand-red/90 text-white font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-red-400 shadow-lg">Fire Hazard</div>
                         </div>
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
                             <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-brand-red transition-colors text-center">FIRE/SMOKE</h3>
@@ -352,13 +409,13 @@
                     <div class="absolute -inset-0.5 bg-gradient-to-b from-brand-blue to-navy-900 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-500"></div>
                     <div class="relative bg-navy-800 border border-white/10 rounded-lg overflow-hidden h-full flex flex-col hover:-translate-y-2 transition duration-300 shadow-2xl">
                         <div class="h-64 relative overflow-hidden clip-screen bg-black">
-                            <img src="https://www.restopros.co/ga-northeast/wp-content/uploads/sites/22/2024/04/Untreated-Water-Damage-is-Dangerous-to-Your-Home-and-Your-Health.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-700" alt="Water Damage">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
-                            <div class="absolute top-4 right-4 bg-brand-blue/90 text-white font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-blue-400">Water Hazard</div>
+                            <!-- UPDATED: New Image URL, removed opacity-80, removed gradient overlay -->
+                            <img src="https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c687bbd8d7c370fd68e.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Water Damage">
+                            <!-- Removed overlay div here -->
+                            <div class="absolute top-4 right-4 bg-brand-blue/90 text-white font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-blue-400 shadow-lg">Water Hazard</div>
                         </div>
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
                             <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-brand-blue transition-colors text-center">WATER DAMAGE</h3>
-                            <!-- UPDATED TEXT: Removed San Jose -->
                             <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow border-t border-white/10 pt-4">
                                 We have been handling water cleanup in Northern and Southern California for many years, so we understand the specialized water damage restoration practice required to return your property to its pre-loss condition. We will be with you through every part of the process including the water extraction, water restoration, and all other water removal services that are required for the crisis.
                             </p>
@@ -372,9 +429,10 @@
                     <div class="absolute -inset-0.5 bg-gradient-to-b from-brand-green to-navy-900 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-500"></div>
                     <div class="relative bg-navy-800 border border-white/10 rounded-lg overflow-hidden h-full flex flex-col hover:-translate-y-2 transition duration-300 shadow-2xl">
                         <div class="h-64 relative overflow-hidden clip-screen bg-black">
-                            <img src="https://i.insider.com/5c1b9be0bde70f399321046c?width=700" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-700" alt="Mold Mitigation">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
-                            <div class="absolute top-4 right-4 bg-brand-green/90 text-navy-900 font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-green-400">Bio Hazard</div>
+                            <!-- UPDATED: Removed opacity-80, removed gradient overlay -->
+                            <img src="https://i.insider.com/5c1b9be0bde70f399321046c?width=700" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Mold Mitigation">
+                            <!-- Removed overlay div here -->
+                            <div class="absolute top-4 right-4 bg-brand-green/90 text-navy-900 font-bold font-display px-3 py-1 text-xs uppercase tracking-widest border border-green-400 shadow-lg">Bio Hazard</div>
                         </div>
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
                             <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-brand-green transition-colors text-center">MOLD MITIGATION</h3>
@@ -385,19 +443,145 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- === NEW: DESIGN-BUILD RECONSTRUCTION SECTION === -->
-    <section id="reconstruction" class="relative py-20 bg-navy-900 overflow-hidden border-t-2 border-brand-blue">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-900 pointer-events-none"></div>
-        
+    <!-- === NEW: BIOHAZARD & TRAUMA CLEANUP SECTION (Layout 1) === -->
+    <section id="biohazard" class="py-20 bg-biohazard-gradient relative overflow-hidden border-t-2 border-brand-green">
         <div class="container mx-auto px-4 relative z-10">
             
-            <!-- 1. CENTERED HEADER -->
+            <!-- Section Header & Featured Image Container -->
+            <div class="max-w-5xl mx-auto mb-16"> <!-- Increased max-width for the grid layout -->
+                <div class="text-center mb-10">
+                    <!-- Removed "Specialized Division" text here -->
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-brand-green text-glow-green mb-6 uppercase">
+                        Biohazard & Trauma Cleanup
+                    </h2>
+                </div>
+                
+                <!-- Grid for Text and Image -->
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                    <!-- Text Block -->
+                    <div class="lg:col-span-3 bg-navy-900/50 backdrop-blur-md p-6 border-l-4 border-brand-green text-left rounded-r-lg shadow-lg relative overflow-hidden">
+                        <!-- Decorative corner -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-brand-green/10 rounded-bl-full pointer-events-none"></div>
+                        
+                        <p class="text-gray-300 text-lg leading-relaxed italic mb-4 relative z-10">
+                            "When tragedy hits a home or business, the aftermath is more than a mess — it’s a serious health risk."
+                        </p>
+                        <p class="text-gray-300 text-base leading-relaxed relative z-10">
+                            Biohazard cleanup requires precision, protection, and people who know exactly what they’re doing. We handle situations most companies can’t and won’t touch. We’re trained, certified, and equipped to decontaminate and restore spaces affected by trauma, death, hazardous waste, and infectious materials. When the scene is overwhelming, we take control — safely, respectfully, and fast.
+                        </p>
+                    </div>
+
+                    <!-- Image Block (UPDATED SIZE & CROP) -->
+                    <div class="lg:col-span-2 relative group flex justify-center lg:justify-center">
+                        <div class="absolute -inset-2 bg-brand-green/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 w-full max-w-[300px] mx-auto"></div>
+                        <!-- max-w-[300px] and h-[400px] restricts size. object-cover crops excess. -->
+                        <div class="relative rounded-xl overflow-hidden border-2 border-brand-green/50 shadow-2xl transform hover:scale-[1.02] transition-transform duration-300 w-full max-w-[300px] h-[400px] mx-auto">
+                            <img src="https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c977bbd8dcf270fde8f.jpeg" alt="Biohazard Cleanup Specialist" class="w-full h-full object-cover object-center relative z-10">
+                            <!-- Tech overlay pattern for consistent style -->
+                            <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_2px,transparent_2px)] bg-[size:100%_4px] pointer-events-none z-20 opacity-50"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What We Clean & Restore Grid -->
+            <div class="mb-20">
+                <h3 class="font-display text-3xl text-white font-bold mb-8 border-b border-white/10 pb-4">WHAT WE CLEAN & RESTORE</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: Trauma -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Trauma & Crime Scene</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Bloodborne pathogens, bodily fluids, and contaminated materials. We sanitize, disinfect, and restore the scene to a safe, livable condition while maintaining strict confidentiality.</p>
+                    </div>
+
+                    <!-- Card 2: Unattended Death -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Unattended Death</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">We remove biological contaminants, handle odor neutralization, and restore the property with sensitivity for the family involved.</p>
+                    </div>
+
+                    <!-- Card 3: Hoarding -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Hoarding Cleanup</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">We clear, sanitize, and restore severe hoarding environments, removing hazardous materials and making the space safe again.</p>
+                    </div>
+
+                    <!-- Card 4: Waste Removal -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Biohazard Waste Removal</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Sharps, medical waste, infectious materials — handled and disposed of to federal, state, and local standards.</p>
+                    </div>
+
+                    <!-- Card 5: Vehicle -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Vehicle Bio Cleanup</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Blood, bodily fluids, drug contamination, waste, and trauma incidents inside personal, commercial, or fleet vehicles.</p>
+                    </div>
+
+                    <!-- Card 6: Odor -->
+                    <div class="bg-navy-800 p-6 border border-white/5 hover:border-brand-green/50 transition-all duration-300 group hover:-translate-y-1">
+                        <h4 class="text-brand-green font-display font-bold text-xl mb-3 group-hover:text-white transition">Odor Removal</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Advanced deodorizers, ozone treatments, and antimicrobial solutions to fully eliminate odors at the source — not cover them up.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Biohazard Process Strip -->
+            <div class="bg-navy-900 border-y border-white/10 py-12 mb-20">
+                <div class="container mx-auto">
+                    <h3 class="font-display text-2xl text-white font-bold mb-8 text-center uppercase tracking-widest">Biohazard Process</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="text-center relative">
+                            <div class="w-12 h-12 rounded-full bg-brand-green text-navy-900 font-bold text-xl flex items-center justify-center mx-auto mb-4 font-display">1</div>
+                            <h4 class="text-white font-bold mb-2">Assess & Secure</h4>
+                            <p class="text-gray-400 text-xs">Evaluate scene, identify hazards, establish zones.</p>
+                        </div>
+                        <div class="text-center relative">
+                            <div class="w-12 h-12 rounded-full bg-brand-green text-navy-900 font-bold text-xl flex items-center justify-center mx-auto mb-4 font-display">2</div>
+                            <h4 class="text-white font-bold mb-2">Remove & Dispose</h4>
+                            <p class="text-gray-400 text-xs">Contaminated materials removed to federal law.</p>
+                        </div>
+                        <div class="text-center relative">
+                            <div class="w-12 h-12 rounded-full bg-brand-green text-navy-900 font-bold text-xl flex items-center justify-center mx-auto mb-4 font-display">3</div>
+                            <h4 class="text-white font-bold mb-2">Clean & Disinfect</h4>
+                            <p class="text-gray-400 text-xs">Hospital-grade cleaning & complete disinfection.</p>
+                        </div>
+                        <div class="text-center relative">
+                            <div class="w-12 h-12 rounded-full bg-brand-green text-navy-900 font-bold text-xl flex items-center justify-center mx-auto mb-4 font-display">4</div>
+                            <h4 class="text-white font-bold mb-2">Restore & Rebuild</h4>
+                            <p class="text-gray-400 text-xs">Return space to safe, livable condition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Who We Serve List (UPDATED COLORS) -->
+            <div class="text-center">
+                <h4 class="text-brand-green font-bold text-sm tracking-widest uppercase mb-6">Who We Serve</h4>
+                <div class="flex flex-wrap justify-center gap-4 text-white text-sm font-bold">
+                    <span class="border border-white px-3 py-1 rounded-full">Homeowners</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Property Managers</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Apartment Complexes</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Hotels</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Law Enforcement</span>
+                    <span class="border border-white px-3 py-1 rounded-full">First Responders</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Industrial Facilities</span>
+                    <span class="border border-white px-3 py-1 rounded-full">Vehicle Fleets</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- === NEW: RECONSTRUCTION SECTION === -->
+    <section id="reconstruction" class="relative py-20 bg-navy-900 overflow-hidden border-t-2 border-brand-blue">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-navy-800 via-navy-900 to-navy-900 pointer-events-none"></div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <p class="text-brand-blue text-sm font-bold tracking-[0.2em] uppercase mb-2 opacity-80">Full Service Construction</p>
                 <h2 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 uppercase tracking-tight">
@@ -411,21 +595,14 @@
                 </div>
             </div>
 
-            <!-- 2. MAIN GRID CONTENT -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
-                
-                <!-- LEFT COLUMN: Advantage -->
                 <div class="pt-4">
-                    <!-- Title with Blue Bar -->
                     <div class="border-l-4 border-brand-blue pl-6 mb-8">
                         <h3 class="font-display text-3xl text-white font-bold">Our Design-Build Advantage</h3>
                     </div>
-                    
                     <p class="text-gray-400 mb-10 leading-relaxed text-lg">
                         With our integrated design and construction teams working under one roof, you get a streamlined, efficient reconstruction process engineered for speed, accuracy, and quality.
                     </p>
-                    
-                    <!-- Checkmark List -->
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
                             <div class="w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center shrink-0 mt-1 shadow-[0_0_10px_rgba(6,182,212,0.5)]">
@@ -454,17 +631,11 @@
                     </ul>
                 </div>
 
-                <!-- RIGHT COLUMN: Timeline Card -->
                 <div class="bg-[#0b1221] rounded-2xl p-8 md:p-10 border border-white/5 shadow-2xl relative overflow-hidden">
-                    <!-- Glow effect -->
                     <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
-
                     <h3 class="font-display text-3xl text-white font-bold mb-10">How We Rebuild Your Home</h3>
-
                     <div class="space-y-8 relative">
-                        <!-- Connecting Line -->
                         <div class="absolute left-[19px] top-4 bottom-4 w-[2px] bg-white/10"></div>
-
                         <!-- Item 1 -->
                         <div class="relative flex gap-6">
                             <div class="w-10 h-10 rounded-full border-2 border-brand-blue text-brand-blue font-bold flex items-center justify-center shrink-0 bg-[#0b1221] z-10 shadow-[0_0_10px_rgba(6,182,212,0.3)]">1</div>
@@ -473,7 +644,6 @@
                                 <p class="text-gray-400 text-sm leading-relaxed">We map layouts, materials, finishes, and structural upgrades.</p>
                             </div>
                         </div>
-
                         <!-- Item 2 -->
                         <div class="relative flex gap-6">
                             <div class="w-10 h-10 rounded-full border-2 border-brand-blue text-brand-blue font-bold flex items-center justify-center shrink-0 bg-[#0b1221] z-10 shadow-[0_0_10px_rgba(6,182,212,0.3)]">2</div>
@@ -482,7 +652,6 @@
                                 <p class="text-gray-400 text-sm leading-relaxed">All plans meet local code and insurance standards.</p>
                             </div>
                         </div>
-
                         <!-- Item 3 -->
                         <div class="relative flex gap-6">
                             <div class="w-10 h-10 rounded-full border-2 border-brand-blue text-brand-blue font-bold flex items-center justify-center shrink-0 bg-[#0b1221] z-10 shadow-[0_0_10px_rgba(6,182,212,0.3)]">3</div>
@@ -491,7 +660,6 @@
                                 <p class="text-gray-400 text-sm leading-relaxed">Framing, mechanicals, drywall, flooring, cabinetry, finishes — executed clean and on schedule.</p>
                             </div>
                         </div>
-
                         <!-- Item 4 -->
                         <div class="relative flex gap-6">
                             <div class="w-10 h-10 rounded-full border-2 border-brand-blue text-brand-blue font-bold flex items-center justify-center shrink-0 bg-[#0b1221] z-10 shadow-[0_0_10px_rgba(6,182,212,0.3)]">4</div>
@@ -502,20 +670,16 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- 3. BOTTOM BANNER -->
+            <!-- Bottom Banner -->
             <div class="bg-gradient-to-r from-[#0b1221] to-[#0f172a] rounded-xl p-8 md:p-12 text-center border border-white/5 shadow-2xl relative overflow-hidden group">
-                <!-- Subtle grid overlay -->
                 <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
-                
                 <div class="relative z-10">
                     <h3 class="font-display text-3xl md:text-4xl text-white font-bold uppercase mb-4 tracking-wide">A Higher Standard of Reconstruction</h3>
                     <p class="text-gray-400 max-w-3xl mx-auto mb-8 text-lg font-light leading-relaxed">
                         Your home deserves more than patchwork. It deserves disciplined planning, skilled craftsmanship, and a team committed to rebuilding it better than it was.
                     </p>
-                    
                     <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-sm md:text-base font-bold tracking-widest uppercase text-brand-blue">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
@@ -534,65 +698,61 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- === WHY CHOOSE US (COLORFUL) === -->
+    <!-- === WHY CHOOSE US (UPDATED - NO VIDEOS, 2x2 GRID) === -->
     <section id="why-choose-us" class="py-12 md:py-24 bg-patriotic-gradient relative border-t-2 border-brand-red overflow-hidden">
-        <!-- Decoration -->
         <div class="absolute -right-20 top-1/2 w-96 h-96 bg-brand-blue/20 rounded-full blur-[100px]"></div>
         <div class="absolute -left-20 bottom-0 w-96 h-96 bg-brand-red/20 rounded-full blur-[100px]"></div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-12 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] text-center">WHY PEOPLE CHOOSE US</h2>
+            
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 
-                <!-- Video Container -->
-                <div class="order-2 lg:order-1 relative group">
-                    <div class="absolute -inset-2 bg-gradient-to-r from-brand-red via-white to-brand-blue rounded-xl blur opacity-40 group-hover:opacity-80 transition duration-500 animate-pulse"></div>
-                    <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border-2 border-brand-blue aspect-video">
-                        <!-- Valid YouTube Embed -->
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0_7t2j4W2cE?si=generic_placeholder" title="Dry1Out Restoration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="w-full h-full relative z-20"></iframe>
+                <!-- Item 1: Certified -->
+                <div class="flex flex-col p-8 bg-navy-900/80 border-l-4 border-brand-blue rounded-r-lg hover:-translate-y-1 transition duration-300 group shadow-lg h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue/20 border border-brand-blue flex shrink-0 items-center justify-center text-brand-blue">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-xl md:text-2xl group-hover:text-brand-blue transition">Certified, Compliant, & Fully Protected</h4>
                     </div>
+                    <p class="text-gray-300 text-base leading-relaxed pl-16">Our team is trained in OSHA, IICRC, and state biohazard protocols. We follow strict PPE, containment, and disposal procedures to ensure safety for everyone involved.</p>
                 </div>
 
-                <!-- Bullet Points -->
-                <div class="order-1 lg:order-2">
-                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-8 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] text-center lg:text-left">WHY CHOOSE US?</h2>
-                    
-                    <div class="space-y-6">
-                        <!-- Item 1: Blue Theme -->
-                        <div class="flex items-center gap-4 p-4 bg-navy-900/80 border-l-4 border-brand-blue rounded-r-lg hover:translate-x-2 transition duration-300 group shadow-lg">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand-blue/20 border border-brand-blue flex shrink-0 items-center justify-center text-brand-blue shadow-neon-blue">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            </div>
-                            <span class="text-white font-bold text-lg md:text-xl tracking-wide group-hover:text-brand-blue transition">24/7 live call availability</span>
+                <!-- Item 2: Discreet -->
+                <div class="flex flex-col p-8 bg-navy-900/80 border-l-4 border-brand-green rounded-r-lg hover:-translate-y-1 transition duration-300 group shadow-lg h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-green/20 border border-brand-green flex shrink-0 items-center justify-center text-brand-green">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                         </div>
-
-                        <!-- Item 2: Red Theme -->
-                        <div class="flex items-center gap-4 p-4 bg-navy-900/80 border-l-4 border-brand-red rounded-r-lg hover:translate-x-2 transition duration-300 group shadow-lg">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand-red/20 border border-brand-red flex shrink-0 items-center justify-center text-brand-red shadow-neon-red">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                            </div>
-                            <span class="text-white font-bold text-lg md:text-xl tracking-wide group-hover:text-brand-red transition">On our way in 60 minutes or less</span>
-                        </div>
-
-                        <!-- Item 3: White Theme -->
-                        <div class="flex items-center gap-4 p-4 bg-navy-900/80 border-l-4 border-white rounded-r-lg hover:translate-x-2 transition duration-300 group shadow-lg">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 border border-white flex shrink-0 items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.4)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2-2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                            </div>
-                            <span class="text-white font-bold text-lg md:text-xl tracking-wide group-hover:text-gray-300 transition">Locally owned & operated since 1998</span>
-                        </div>
-
-                        <!-- Item 4: Blue Theme -->
-                        <div class="flex items-center gap-4 p-4 bg-navy-900/80 border-l-4 border-brand-blue rounded-r-lg hover:translate-x-2 transition duration-300 group shadow-lg">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand-blue/20 border border-brand-blue flex shrink-0 items-center justify-center text-brand-blue shadow-neon-blue">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                            </div>
-                            <span class="text-white font-bold text-lg md:text-xl tracking-wide group-hover:text-brand-blue transition">More than 40, 5-star reviews</span>
-                        </div>
+                        <h4 class="text-white font-bold text-xl md:text-2xl group-hover:text-brand-green transition">Discreet & Compassionate</h4>
                     </div>
+                    <p class="text-gray-300 text-base leading-relaxed pl-16">We show up unmarked whenever needed. We move with respect — no judgment, no pressure, just help when you need it most.</p>
+                </div>
+
+                <!-- Item 3: 24/7 -->
+                <div class="flex flex-col p-8 bg-navy-900/80 border-l-4 border-brand-red rounded-r-lg hover:-translate-y-1 transition duration-300 group shadow-lg h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-red/20 border border-brand-red flex shrink-0 items-center justify-center text-brand-red">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-xl md:text-2xl group-hover:text-brand-red transition">24/7 Rapid Response</h4>
+                    </div>
+                    <p class="text-gray-300 text-base leading-relaxed pl-16">Biohazards can’t wait. We’re available day or night to secure the environment fast and prevent further contamination.</p>
+                </div>
+
+                <!-- Item 4: Insurance -->
+                <div class="flex flex-col p-8 bg-navy-900/80 border-l-4 border-white rounded-r-lg hover:-translate-y-1 transition duration-300 group shadow-lg h-full">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-white/20 border border-white flex shrink-0 items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-xl md:text-2xl group-hover:text-gray-300 transition">Insurance-Friendly</h4>
+                    </div>
+                    <p class="text-gray-300 text-base leading-relaxed pl-16">Most biohazard situations are covered by insurance. We help guide clients through the process and work directly with their carrier when possible.</p>
                 </div>
 
             </div>
@@ -607,8 +767,24 @@
         </div>
     </section>
 
+    <!-- === CLOSING CTA === -->
+    <section class="py-16 bg-navy-800 border-t border-b border-brand-red/30">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">
+                WHEN YOU DON’T KNOW WHO TO CALL — <span class="text-brand-red text-glow-red">CALL US.</span>
+            </h2>
+            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-8 font-light">
+                We’re the team that steps into the hardest scenes with calm, confidence, and control.
+                No judgment. No panic. Just professionals restoring order so people can move forward.
+            </p>
+            <a href="tel:8883791688" class="inline-block px-10 py-4 bg-brand-red text-white font-display font-bold text-2xl uppercase tracking-widest hover:bg-white hover:text-brand-red transition-all duration-300 shadow-neon-red clip-path-polygon">
+                (888) 379-1688
+            </a>
+        </div>
+    </section>
+
     <!-- === CONTACT US SECTION (COLORFUL) === -->
-    <section id="contact" class="py-12 md:py-24 bg-gradient-to-br from-navy-900 via-brand-blue/20 to-brand-red/20 relative border-t-4 border-brand-white">
+    <section id="contact" class="py-12 md:py-24 bg-gradient-to-br from-navy-900 via-brand-blue/20 to-brand-red/20 relative">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
@@ -657,7 +833,7 @@
                                 <option>Water Damage</option>
                                 <option>Fire / Smoke</option>
                                 <option>Mold Mitigation</option>
-                                <!-- ADDED OPTION -->
+                                <option>Biohazard / Trauma</option>
                                 <option class="text-brand-blue font-bold">Construction / Remodel</option>
                             </select>
                         </div>
@@ -676,7 +852,7 @@
         </div>
     </section>
 
-    <!-- === GALLERY SECTION (COLORFUL) === -->
+    <!-- === GALLERY SECTION (UPDATED: IMAGE/VIDEO TOGGLE) === -->
     <section id="gallery" class="py-12 md:py-24 bg-navy-900 relative border-t-2 border-brand-blue">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -684,19 +860,55 @@
                 <div class="w-24 h-1 bg-brand-red mx-auto mt-4"></div>
             </div>
 
+            <!-- Gallery Controls (Icons) -->
+            <div class="flex justify-center gap-6 mb-8">
+                <button onclick="toggleMode('images')" id="btn-images" class="p-3 rounded-full bg-brand-blue text-navy-900 transition hover:scale-110 shadow-neon-blue">
+                    <!-- Camera Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
+                <button onclick="toggleMode('videos')" id="btn-videos" class="p-3 rounded-full bg-navy-800 text-white border border-white/20 transition hover:scale-110 hover:border-brand-red hover:text-brand-red">
+                    <!-- Video Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                </button>
+            </div>
+
             <!-- Main Display Unit (VERTICAL PHONE ASPECT RATIO) -->
-            <div class="relative max-w-sm md:max-w-md mx-auto bg-black border-4 border-transparent bg-clip-border rounded-xl shadow-2xl aspect-[9/16] group" style="background-image: linear-gradient(white, white), linear-gradient(to right, #ef4444, #ffffff, #06b6d4); background-origin: border-box; background-clip: content-box, border-box;">
+            <!-- UPDATED SIZE: Changed max-w-sm/md:max-w-md TO max-w-[280px] md:max-w-sm for smaller footprint -->
+            <div class="relative w-full max-w-[280px] md:max-w-sm mx-auto bg-black border-4 border-transparent bg-clip-border rounded-xl shadow-2xl aspect-[9/16] group" style="background-image: linear-gradient(white, white), linear-gradient(to right, #ef4444, #ffffff, #06b6d4); background-origin: border-box; background-clip: content-box, border-box;">
                 <!-- Tech Overlay -->
                 <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.2)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none z-20"></div>
                 
-                <img id="main-gallery-img" src="https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25cd82f4c514fe1b0135.jpeg" 
-                     class="w-full h-full object-cover transition-all duration-500 relative z-10" alt="Gallery Image">
+                <!-- Image Container -->
+                <img id="gallery-image" src="https://placehold.co/1080x1920/1e293b/ffffff?text=Image+1+Coming+Soon" 
+                     class="w-full h-full object-cover transition-all duration-500 relative z-10 block" alt="Gallery Image">
+
+                <!-- Video Container (UPDATED: removed controls, added click handler) -->
+                <video id="gallery-video" class="w-full h-full object-cover relative z-10 hidden cursor-pointer" onclick="togglePlayPause()" playsinline>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <!-- NEW: Centered Play Button Overlay -->
+                <!-- Wrapper is pointer-events-none so clicks outside the button hit the video -->
+                <div id="video-play-btn" class="absolute inset-0 z-30 flex items-center justify-center hidden pointer-events-none">
+                    <!-- Button is pointer-events-auto to capture clicks specifically on the icon -->
+                    <button onclick="togglePlayPause()" class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 transition-all duration-300 pointer-events-auto group border-2 border-white/50 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white fill-current group-hover:scale-110 transition ml-1" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </button>
+                </div>
 
                 <!-- HUD Controls (Centered) -->
                 <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-navy-900 via-navy-900/90 to-transparent z-30 flex justify-center items-end border-t border-white/10">
                     <div class="flex gap-4">
-                        <button onclick="changeImage(-1)" class="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-blue text-brand-blue flex items-center justify-center hover:bg-brand-blue hover:text-navy-900 transition font-bold text-2xl shadow-neon-blue">←</button>
-                        <button onclick="changeImage(1)" class="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-red text-brand-red flex items-center justify-center hover:bg-brand-red hover:text-white transition font-bold text-2xl shadow-neon-red">→</button>
+                        <button onclick="changeMedia(-1)" class="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-blue text-brand-blue flex items-center justify-center hover:bg-brand-blue hover:text-navy-900 transition font-bold text-2xl shadow-neon-blue">←</button>
+                        <button onclick="changeMedia(1)" class="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-red text-brand-red flex items-center justify-center hover:bg-brand-red hover:text-white transition font-bold text-2xl shadow-neon-red">→</button>
                     </div>
                 </div>
             </div>
@@ -757,37 +969,183 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR GALLERY -->
+    <!-- JAVASCRIPT FOR GALLERY, MOBILE MENU & SCROLL SPY -->
     <script>
-        const images = [
-            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25cd82f4c514fe1b0135.jpeg",
-            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25d6aaad9115b0d89f33.jpg",
-            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25d82b865e16e9d9252c.jpg",
-            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25da2b865e1d30d92567.jpg",
+        // --- 1. GALLERY LOGIC ---
+        const caseImages = [
             "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25dc2b865e1e8ed92582.jpg",
-            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/692c25df96dd5bdc40fa5d1b.jpg"
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c92cbd64db7f8657f0e.jpeg",
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c99e0f092b0c46c44dc.png",
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c94e0f09275e06c43da.jpeg",
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c6c7bbd8d50a00fd715.png",
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/69309c687bbd8d7c370fd68e.png"
+        ];
+        
+        const caseVideos = [
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/6930a91c1d466e8fac7d0125.mov", 
+            "https://storage.googleapis.com/msgsndr/SoaJxwp6MUc7dIBOnzdi/media/6930a91c4d01f3494ea7021e.mov"
         ];
 
-        let currentIndex = 0;
-        const imgElement = document.getElementById('main-gallery-img');
+        let currentImgIndex = 0;
+        let currentVidIndex = 0;
+        let currentMode = 'images'; // 'images' or 'videos'
 
-        function changeImage(direction) {
-            // Apply fade out class
-            imgElement.classList.add('opacity-0', 'scale-95');
+        const imgElement = document.getElementById('gallery-image');
+        const vidElement = document.getElementById('gallery-video');
+        const btnImages = document.getElementById('btn-images');
+        const btnVideos = document.getElementById('btn-videos');
+        const playBtnContainer = document.getElementById('video-play-btn');
+
+        // Set initial image
+        imgElement.src = caseImages[0];
+
+        // Video Play/Pause Toggle Logic
+        function togglePlayPause() {
+            if (vidElement.paused) {
+                vidElement.play();
+            } else {
+                vidElement.pause();
+            }
+        }
+
+        // Event Listeners for Video State to sync button visibility
+        vidElement.onplay = () => {
+            playBtnContainer.classList.add('hidden');
+        };
+        
+        vidElement.onpause = () => {
+            // Check if we are currently in video mode so we don't show it over an image
+            if (currentMode === 'videos') {
+                playBtnContainer.classList.remove('hidden');
+            }
+        };
+        
+        vidElement.onended = () => {
+            if (currentMode === 'videos') {
+                playBtnContainer.classList.remove('hidden');
+            }
+        };
+
+        function toggleMode(mode) {
+            currentMode = mode;
+            if (mode === 'images') {
+                btnImages.classList.add('bg-brand-blue', 'text-navy-900', 'shadow-neon-blue');
+                btnImages.classList.remove('bg-navy-800', 'text-white', 'border', 'border-white/20');
+                
+                btnVideos.classList.remove('bg-brand-red', 'text-white', 'shadow-neon-red');
+                btnVideos.classList.add('bg-navy-800', 'text-white', 'border', 'border-white/20');
+                
+                imgElement.classList.remove('hidden');
+                vidElement.classList.add('hidden');
+                playBtnContainer.classList.add('hidden'); // Hide play button in image mode
+                vidElement.pause();
+                
+                updateDisplay();
+            } else {
+                btnVideos.classList.add('bg-brand-red', 'text-white', 'shadow-neon-red');
+                btnVideos.classList.remove('bg-navy-800', 'text-white', 'border', 'border-white/20');
+                
+                btnImages.classList.remove('bg-brand-blue', 'text-navy-900', 'shadow-neon-blue');
+                btnImages.classList.add('bg-navy-800', 'text-white', 'border', 'border-white/20');
+                
+                vidElement.classList.remove('hidden');
+                imgElement.classList.add('hidden');
+                playBtnContainer.classList.remove('hidden'); // Show play button in video mode
+                
+                updateDisplay();
+            }
+        }
+
+        function changeMedia(direction) {
+            if (currentMode === 'images') {
+                imgElement.classList.add('opacity-0', 'scale-95');
+            } else {
+                vidElement.classList.add('opacity-0', 'scale-95');
+            }
             
             setTimeout(() => {
-                // Update index
-                currentIndex += direction;
-                if (currentIndex >= images.length) currentIndex = 0;
-                if (currentIndex < 0) currentIndex = images.length - 1;
-
-                // Update src
-                imgElement.src = images[currentIndex];
-
-                // Remove fade out (trigger fade in)
+                if (currentMode === 'images') {
+                    currentImgIndex += direction;
+                    if (currentImgIndex >= caseImages.length) currentImgIndex = 0;
+                    if (currentImgIndex < 0) currentImgIndex = caseImages.length - 1;
+                } else {
+                    currentVidIndex += direction;
+                    if (currentVidIndex >= caseVideos.length) currentVidIndex = 0;
+                    if (currentVidIndex < 0) currentVidIndex = caseVideos.length - 1;
+                    
+                    // Reset to paused state with button visible when changing videos
+                    vidElement.pause();
+                    playBtnContainer.classList.remove('hidden');
+                }
+                updateDisplay();
                 imgElement.classList.remove('opacity-0', 'scale-95');
-            }, 300); // Wait for transition out
+                vidElement.classList.remove('opacity-0', 'scale-95');
+            }, 300);
         }
+
+        function updateDisplay() {
+            if (currentMode === 'images') {
+                imgElement.src = caseImages[currentImgIndex];
+            } else {
+                vidElement.src = caseVideos[currentVidIndex];
+                vidElement.load();
+            }
+        }
+
+        // --- 2. MOBILE MENU TOGGLE ---
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        function toggleMobileMenu() {
+            if (mobileMenuOverlay.classList.contains('hidden')) {
+                mobileMenuOverlay.classList.remove('hidden');
+                // Allow a tiny delay for transition to work
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.remove('opacity-0');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                mobileMenuOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+
+        // --- 3. SCROLL SPY (ACTIVE NAV STATE) ---
+        // Select all sections that have an ID and are used in nav
+        const sections = document.querySelectorAll("section[id], header[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Get the id of the section currently in view
+                    const id = entry.target.getAttribute("id");
+                    
+                    // Remove active class from all links
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        // Also reset text color styles if manipulated directly
+                    });
+
+                    // Add active class to the link that corresponds to the current section
+                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add("active");
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
